@@ -15,84 +15,84 @@ export const useBackpackStore = defineStore('backpack', () => {
       id: 'water',
       icon: '💧',
       title: 'Woda',
-      description: '3 liters per person for 3 days. Essential for survival.',
+      description: '3 litry na osobę na 3 dni. Niezbędne do przeżycia.',
       checked: false
     },
     {
       id: 'food',
       icon: '🥫',
       title: 'Jedzenie',
-      description: 'Non-perishable food for 3 days. Canned goods, energy bars.',
+      description: 'Żywność niepsująca się na 3 dni. Konserwy, batony energetyczne.',
       checked: false
     },
     {
       id: 'firstaid',
       icon: '💼',
       title: 'Apteczka',
-      description: 'Basic medical supplies, bandages, medications.',
+      description: 'Podstawowe artykuły medyczne, bandaże, leki.',
       checked: false
     },
     {
       id: 'flashlight',
       icon: '💡',
       title: 'Latarka',
-      description: 'LED flashlight with extra batteries.',
+      description: 'Latarka LED z dodatkowymi bateriami.',
       checked: false
     },
     {
       id: 'radio',
       icon: '📻',
       title: 'Radio',
-      description: 'Battery-powered or hand-crank radio for emergency information.',
+      description: 'Radio zasilane bateryjnie lub ręczną korbką do odbioru informacji alarmowych.',
       checked: false
     },
     {
       id: 'documents',
       icon: '📄',
       title: 'Dokumenty',
-      description: 'Copies of ID, insurance, bank records in waterproof container.',
+      description: 'Kopie dokumentów tożsamości, ubezpieczenia, wyciągów bankowych w wodoodpornym pojemniku.',
       checked: false
     },
     {
       id: 'cash',
       icon: '💵',
       title: 'Gotówka',
-      description: 'Small bills and coins for emergency purchases.',
+      description: 'Małe banknoty i monety na zakupy w nagłych wypadkach.',
       checked: false
     },
     {
       id: 'clothing',
       icon: '👕',
       title: 'Ubrania',
-      description: 'Change of clothes, rain gear, sturdy shoes.',
+      description: 'Zmiana ubrania, odzież przeciwdeszczowa, solidne obuwie.',
       checked: false
     },
     {
       id: 'hygiene',
       icon: '🧴',
       title: 'Higiena',
-      description: 'Toothbrush, soap, toilet paper, feminine supplies.',
+      description: 'Szczoteczka do zębów, mydło, papier toaletowy, artykuły higieniczne dla kobiet.',
       checked: false
     },
     {
       id: 'tools',
       icon: '🔧',
       title: 'Narzędzia',
-      description: 'Multi-tool, duct tape, plastic sheeting, matches.',
+      description: 'Narzędzie wielofunkcyjne, taśma klejąca, folia plastikowa, zapałki.',
       checked: false
     },
     {
       id: 'charger',
       icon: '🔋',
       title: 'Ładowarka',
-      description: 'Portable phone charger or power bank.',
+      description: 'Przenośna ładowarka do telefonu lub power bank.',
       checked: false
     },
     {
       id: 'blanket',
       icon: '🛏️',
       title: 'Koc',
-      description: 'Emergency blanket or sleeping bag for warmth.',
+      description: 'Koc ratunkowy lub śpiwór zapewniający ciepło.',
       checked: false
     }
   ])

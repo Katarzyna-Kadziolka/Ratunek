@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import EmergencyBackpackView from '../views/EmergencyBackpackView.vue'
+import AlarmSirensView from '../views/AlarmSirensView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -8,6 +9,11 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: EmergencyBackpackView,
+    },
+    {
+      path: '/alarm-sirens',
+      name: 'alarm-sirens',
+      component: AlarmSirensView,
     },
     {
       path: '/about',

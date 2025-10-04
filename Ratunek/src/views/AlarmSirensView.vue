@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useBackpackStore } from '@/stores/backpack'
+import { useAlarmsStore } from '@/stores/alarms'
 import { useRouter } from 'vue-router'
 
-const backpackStore = useBackpackStore()
+const alarmsStore = useAlarmsStore()
 const router = useRouter()
 const isSideMenuOpen = ref(false)
 
@@ -27,7 +27,7 @@ const navigateToAlarms = () => {
 </script>
 
 <template>
-  <div class="emergency-backpack-view">
+  <div class="alarm-sirens-view">
     <!-- Side Menu Overlay -->
     <div v-if="isSideMenuOpen" class="side-menu-overlay" @click="closeSideMenu"></div>
 
@@ -123,73 +123,79 @@ const navigateToAlarms = () => {
           <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
         </svg>
       </button>
-      <h1 class="header-title">Plecak ewakuacyjny</h1>
-      <button class="icon-button help-button">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
-          <path d="M12 16v.01M12 12a2 2 0 0 1 2-2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-      </button>
+      <h1 class="header-title">Syreny alarmowe</h1>
+      <div class="icon-button-placeholder"></div>
     </header>
 
     <!-- Main Content -->
     <main class="main-content">
-      <!-- Emergency Backpack Info Card -->
+      <!-- General Info Card -->
       <div class="info-card">
-        <div class="info-card-icon">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+        <div class="info-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 8v4M12 16h.01" stroke="white" stroke-width="2" stroke-linecap="round"/>
           </svg>
         </div>
-        <div class="info-card-content">
-          <h2 class="info-card-title">Plecak ewakuacyjnyk</h2>
-          <p class="info-card-subtitle">Niezbędne przedmioty na wypadek sytuacji awaryjnych</p>
-          <p class="info-card-description">
-            Przygotuj plecak awaryjny z niezbędnymi przedmiotami, które pomogą Ci przetrwać 72 godziny w sytuacji kryzysowej.
+        <div class="info-content">
+          <h3 class="info-title">Testy ogólnokrajowe:</h3>
+          <p class="info-text">
+            Syreny alarmowe są testowane w pierwszą środę każdego miesiąca o godzinie 12:00.
           </p>
         </div>
-        <div class="progress-indicator">
-          <span class="progress-label">Postęp</span>
-          <span class="progress-value">{{ backpackStore.progress }}</span>
-        </div>
       </div>
 
-      <!-- Checklist Items -->
-      <div class="checklist">
-        <div
-          v-for="item in backpackStore.items"
-          :key="item.id"
-          class="checklist-item"
-        >
+      <!-- Learning Mode Toggle -->
+      <div class="learning-mode-card">
+        <div class="learning-mode-content">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="learning-icon">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M6 12v5c3 3 9 3 12 0v-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="learning-mode-label">Tryb nauki</span>
+        </div>
+        <label class="toggle-switch">
           <input
             type="checkbox"
-            :id="item.id"
-            :checked="item.checked"
-            @change="backpackStore.toggleItem(item.id)"
-            class="checkbox"
+            :checked="alarmsStore.learningMode"
+            @change="alarmsStore.toggleLearningMode()"
           />
-          <label :for="item.id" class="item-content">
-            <div class="item-icon">{{ item.icon }}</div>
-            <div class="item-text">
-              <h3 class="item-title">{{ item.title }}</h3>
-              <p class="item-description">{{ item.description }}</p>
-            </div>
-          </label>
-        </div>
+          <span class="toggle-slider"></span>
+        </label>
       </div>
 
-      <!-- Check Knowledge Button -->
-      <button class="check-knowledge-button">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 8px;">
-          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-        </svg>
-        Sprawdź swoją wiedzę
-      </button>
+      <!-- Alarm Cards -->
+      <div class="alarm-cards">
+        <div
+          v-for="alarm in alarmsStore.alarmTypes"
+          :key="alarm.id"
+          class="alarm-card"
+        >
+          <div class="alarm-header">
+            <h3 class="alarm-title">{{ alarm.title }}</h3>
+            <button class="play-button" :style="{ backgroundColor: alarm.color }">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </button>
+          </div>
+          <p class="alarm-duration">{{ alarm.duration }}</p>
+          <p class="alarm-description">{{ alarm.description }}</p>
+          <div class="alarm-actions">
+            <button class="action-button primary" :style="{ backgroundColor: alarm.color }">
+              {{ alarm.actionText }}
+            </button>
+            <button class="action-button secondary">
+              Rozpoznaj dźwięk
+            </button>
+          </div>
+        </div>
+      </div>
     </main>
 
     <!-- Bottom Navigation -->
     <nav class="bottom-nav">
-      <button class="nav-item">
+      <button class="nav-item" @click="router.push('/')">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
           <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           <path d="M9 22V12h6v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -224,7 +230,7 @@ const navigateToAlarms = () => {
 </template>
 
 <style scoped>
-.emergency-backpack-view {
+.alarm-sirens-view {
   min-height: 100vh;
   background-color: #f5f7fa;
   display: flex;
@@ -237,8 +243,9 @@ const navigateToAlarms = () => {
   align-items: center;
   justify-content: space-between;
   padding: 16px 20px;
-  background-color: white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+  background-color: #1e3a8a;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -247,7 +254,6 @@ const navigateToAlarms = () => {
 .header-title {
   font-size: 18px;
   font-weight: 600;
-  color: #2c3e82;
   margin: 0;
   flex: 1;
   text-align: center;
@@ -258,7 +264,7 @@ const navigateToAlarms = () => {
   border: none;
   padding: 8px;
   cursor: pointer;
-  color: #2c3e82;
+  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -267,11 +273,12 @@ const navigateToAlarms = () => {
 }
 
 .icon-button:hover {
-  background-color: #f0f2f5;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
-.help-button {
-  color: #6b7280;
+.icon-button-placeholder {
+  width: 40px;
+  height: 40px;
 }
 
 /* Main Content */
@@ -284,153 +291,213 @@ const navigateToAlarms = () => {
   width: 100%;
 }
 
-/* Info Card */
+/* General Info Card */
 .info-card {
-  background: white;
-  border-radius: 12px;
-  padding: 24px;
-  margin-bottom: 24px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-  position: relative;
-}
-
-.info-card-icon {
-  width: 56px;
-  height: 56px;
-  background-color: #2c3e82;
-  border-radius: 12px;
+  background: #e0f2fe;
+  border-left: 4px solid #1e3a8a;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  margin-bottom: 16px;
+  gap: 12px;
+  align-items: flex-start;
 }
 
-.info-card-title {
-  font-size: 20px;
+.info-icon {
+  color: #1e3a8a;
+  flex-shrink: 0;
+}
+
+.info-content {
+  flex: 1;
+}
+
+.info-title {
+  font-size: 14px;
   font-weight: 600;
-  color: #1f2937;
+  color: #1e3a8a;
   margin: 0 0 4px 0;
 }
 
-.info-card-subtitle {
+.info-text {
   font-size: 14px;
-  color: #6b7280;
-  margin: 0 0 12px 0;
+  color: #1e40af;
+  margin: 0;
+  line-height: 1.5;
 }
 
-.info-card-description {
-  font-size: 14px;
-  color: #4b5563;
-  line-height: 1.6;
+/* Learning Mode Card */
+.learning-mode-card {
+  background: white;
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.learning-mode-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.learning-icon {
+  color: #1e3a8a;
+}
+
+.learning-mode-label {
+  font-size: 16px;
+  font-weight: 500;
+  color: #1f2937;
+}
+
+/* Toggle Switch */
+.toggle-switch {
+  position: relative;
+  width: 50px;
+  height: 28px;
+  cursor: pointer;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #d1d5db;
+  border-radius: 28px;
+  transition: 0.3s;
+}
+
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.toggle-switch input:checked + .toggle-slider {
+  background-color: #1e3a8a;
+}
+
+.toggle-switch input:checked + .toggle-slider:before {
+  transform: translateX(22px);
+}
+
+/* Alarm Cards */
+.alarm-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.alarm-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.alarm-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.alarm-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
   margin: 0;
 }
 
-.progress-indicator {
-  position: absolute;
-  top: 24px;
-  right: 24px;
-  text-align: right;
-}
-
-.progress-label {
-  display: block;
-  font-size: 12px;
-  color: #6b7280;
-  margin-bottom: 4px;
-}
-
-.progress-value {
-  display: block;
-  font-size: 16px;
-  font-weight: 600;
-  color: #2c3e82;
-}
-
-/* Checklist */
-.checklist {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-bottom: 24px;
-}
-
-.checklist-item {
-  background: white;
-  border-radius: 12px;
-  padding: 16px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-}
-
-.checkbox {
-  width: 20px;
-  height: 20px;
-  margin-top: 4px;
-  cursor: pointer;
-  flex-shrink: 0;
-}
-
-.item-content {
-  display: flex;
-  gap: 12px;
-  flex: 1;
-  cursor: pointer;
-  align-items: flex-start;
-}
-
-.item-icon {
-  width: 40px;
-  height: 40px;
-  background-color: #e8f4ff;
-  border-radius: 10px;
+.play-button {
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
-  flex-shrink: 0;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.item-text {
-  flex: 1;
+.play-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-.item-title {
-  font-size: 16px;
-  font-weight: 600;
+.play-button:active {
+  transform: scale(0.98);
+}
+
+.alarm-duration {
+  font-size: 14px;
   color: #1f2937;
-  margin: 0 0 4px 0;
+  font-weight: 500;
+  margin: 0 0 8px 0;
 }
 
-.item-description {
+.alarm-description {
   font-size: 14px;
   color: #6b7280;
   line-height: 1.5;
-  margin: 0;
+  margin: 0 0 16px 0;
 }
 
-/* Check Knowledge Button */
-.check-knowledge-button {
-  width: 100%;
-  background-color: #2c3e82;
-  color: white;
+.alarm-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.action-button {
+  flex: 1;
+  padding: 12px 16px;
   border: none;
-  border-radius: 12px;
-  padding: 16px;
-  font-size: 16px;
+  border-radius: 8px;
+  font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.2s;
-  margin-bottom: 24px;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.check-knowledge-button:hover {
-  background-color: #243266;
+.action-button.primary {
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.action-button.primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.action-button.secondary {
+  background-color: white;
+  color: #4b5563;
+  border: 1px solid #d1d5db;
+}
+
+.action-button.secondary:hover {
+  background-color: #f9fafb;
+  border-color: #9ca3af;
 }
 
 /* Bottom Navigation */
@@ -466,7 +533,7 @@ const navigateToAlarms = () => {
 }
 
 .nav-item:hover {
-  color: #2c3e82;
+  color: #1e3a8a;
 }
 
 .nav-item svg {
