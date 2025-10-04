@@ -34,7 +34,8 @@ const router = useRouter()
 
 <style scoped>
 .bottom-nav {
-  position: fixed;
+  width: 100%;
+  position: sticky;
   bottom: 0;
   left: 0;
   right: 0;
