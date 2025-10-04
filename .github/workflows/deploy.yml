@@ -28,6 +28,7 @@ jobs:
         run: npm run build
 
       - name: Copy index.html to 404.html
+        working-directory: ./Ratunek
         run: |
           cp ./dist/index.html ./dist/404.html
       
