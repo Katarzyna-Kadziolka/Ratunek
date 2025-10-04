@@ -63,7 +63,7 @@ const navigateToSettings = () => {
   <!-- Side Menu Drawer -->
   <aside class="side-menu" :class="{ 'side-menu-open': isOpen }">
     <div class="side-menu-header">
-      <h2 class="side-menu-title">Ratunek</h2>
+      <h2 class="side-menu-title">mKryzys</h2>
       <button class="close-button" @click="closeSideMenu">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
           <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>

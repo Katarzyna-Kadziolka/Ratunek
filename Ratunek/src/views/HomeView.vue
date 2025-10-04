@@ -32,7 +32,7 @@ const navigateToFirstAid = () => {
 
     <!-- Header -->
     <AppHeader
-      title="Ratunek"
+      title="mKryzys"
       @open-menu="isSideMenuOpen = true"
     />
 

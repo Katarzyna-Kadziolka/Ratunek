@@ -443,9 +443,6 @@ const isSideMenuOpen = ref(false)
 
 /* Responsive Design */
 @media (max-width: 480px) {
-  .crisis-type-grid {
-    grid-template-columns: 1fr;
-  }
 
   .request-actions {
     flex-direction: column;
