@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main # lub master, zależnie od nazwy twojej gałęzi
+      - main
 
 permissions:
   contents: read
@@ -21,10 +21,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-          cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install  # zmienione z npm ci
 
       - name: Build
         run: npm run build
