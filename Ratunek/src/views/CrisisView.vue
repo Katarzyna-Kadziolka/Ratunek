@@ -28,7 +28,7 @@ const navigateTo = (routeName: string) => {
     <!-- Main Content -->
     <main class="main-content">
       <!-- Crisis Situation Card -->
-      <div class="crisis-situation-card">
+      <div class="crisis-situation-card" @click="navigateTo('evacuation-preparation')">
         <div class="alert-icon">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
@@ -153,6 +153,17 @@ const navigateTo = (routeName: string) => {
   margin-bottom: 24px;
   text-align: center;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.crisis-situation-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.crisis-situation-card:active {
+  transform: translateY(0);
 }
 
 .alert-icon {

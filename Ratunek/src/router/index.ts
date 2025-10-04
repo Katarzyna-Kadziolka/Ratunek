@@ -9,6 +9,7 @@ import RCBAlertsView from '../views/RCBAlertsView.vue'
 import SOSoundView from '../views/SOSoundView.vue'
 import CrisisView from '../views/CrisisView.vue'
 import SettingsView from '../views/SettingsView.vue'
+import EvacuationPreparationView from '../views/EvacuationPreparationView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -57,6 +58,11 @@ const router = createRouter({
       path: '/crisis',
       name: 'crisis',
       component: CrisisView,
+    },
+    {
+      path: '/evacuation-preparation',
+      name: 'evacuation-preparation',
+      component: EvacuationPreparationView,
     },
     {
       path: '/settings',
