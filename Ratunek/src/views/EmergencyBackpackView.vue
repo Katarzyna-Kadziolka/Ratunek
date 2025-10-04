@@ -79,35 +79,36 @@ const backpackStore = useBackpackStore()
 
     <!-- Bottom Navigation -->
     <nav class="bottom-nav">
-      <div class="pagination">
-        <button class="nav-item">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M10 19l-7-7m0 0l7-7m-7 7h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <span>Home</span>
-        </button>
+      <button class="nav-item">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M9 22V12h6v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Home</span>
+      </button>
 
-        <div class="page-indicator">
-          <button class="page-nav-button">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-              <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
-          <span class="page-number">5 / 7</span>
-          <button class="page-nav-button">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-              <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
-        </div>
+      <button class="nav-item">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Notatki</span>
+      </button>
 
-        <button class="nav-item">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <span>Lista</span>
-        </button>
-      </div>
+      <button class="nav-item">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M13.73 21a2 2 0 0 1-3.46 0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Alarm</span>
+      </button>
+
+      <button class="nav-item">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Lista</span>
+      </button>
     </nav>
   </div>
 </template>
@@ -330,13 +331,10 @@ const backpackStore = useBackpackStore()
   right: 0;
   background: white;
   border-top: 1px solid #e5e7eb;
-  padding: 12px 20px;
+  padding: 8px 20px;
   box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.06);
-}
-
-.pagination {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   max-width: 800px;
   margin: 0 auto;
@@ -351,43 +349,17 @@ const backpackStore = useBackpackStore()
   gap: 4px;
   color: #6b7280;
   cursor: pointer;
-  padding: 4px 8px;
+  padding: 8px 12px;
   font-size: 12px;
+  flex: 1;
+  transition: color 0.2s;
 }
 
 .nav-item:hover {
   color: #2c3e82;
 }
 
-.page-indicator {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: white;
-  border: 1px solid #e5e7eb;
-  border-radius: 24px;
-  padding: 8px 16px;
-}
-
-.page-nav-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #6b7280;
-  display: flex;
-  align-items: center;
-  padding: 4px;
-}
-
-.page-nav-button:hover {
-  color: #2c3e82;
-}
-
-.page-number {
-  font-size: 14px;
-  font-weight: 500;
-  color: #1f2937;
-  min-width: 50px;
-  text-align: center;
+.nav-item svg {
+  flex-shrink: 0;
 }
 </style>
