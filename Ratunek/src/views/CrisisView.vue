@@ -31,7 +31,7 @@ const isSideMenuOpen = ref(false)
         </div>
         <h2 class="alert-title">Potrzebuję pomocy</h2>
         <p class="alert-description">
-          Wyślij prośbę o pomoc do użytkowników w promieniu {{ crisisStore.searchRadius }} km
+          Wyślij prośbę o pomoc do użytkowników w promieniu {{ crisisStore.searchRadius }} m
         </p>
         <button class="send-help-button">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 8px;">
@@ -113,7 +113,7 @@ const isSideMenuOpen = ref(false)
                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="#6b7280" stroke-width="2"/>
                 <circle cx="12" cy="10" r="3" stroke="#6b7280" stroke-width="2"/>
               </svg>
-              <span>{{ request.distance / 1000 }} km od Ciebie</span>
+              <span>{{ request.distance }} m od Ciebie</span>
             </div>
 
             <div class="request-actions">

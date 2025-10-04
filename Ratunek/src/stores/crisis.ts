@@ -22,7 +22,7 @@ export const useCrisisStore = defineStore('crisis', () => {
       title: 'Wypadek samochodowy',
       location: 'ul. Krakowskiej',
       description: 'Potrzebuję pomocy przy wypadku na ul. Krakowskiej. Nie mogę wyjść z samochodu.',
-      distance: 800,
+      distance: 80,
       time: '2 min temu',
       requester: 'Anonymous'
     },
@@ -32,14 +32,14 @@ export const useCrisisStore = defineStore('crisis', () => {
       title: 'Nagły wypadek medyczny',
       location: 'ul. Krakowskiej',
       description: 'Starszy mężczyzna zemdlał w parku. Potrzebuję kogoś z doświadczeniem w pierwszej pomocy.',
-      distance: 1200,
+      distance: 25,
       time: '5 min temu',
       requester: 'Anonymous'
     }
   ])
 
   const userLocation = ref('Warszawa, Śródmieście')
-  const searchRadius = ref(1.5) // in km
+  const searchRadius = ref(100) // in km
 
   const requestsInRadius = computed(() => {
     const radiusMeters = searchRadius.value * 1000
