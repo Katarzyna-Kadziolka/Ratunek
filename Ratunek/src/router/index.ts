@@ -3,6 +3,7 @@ import EmergencyBackpackView from '../views/EmergencyBackpackView.vue'
 import AlarmSirensView from '../views/AlarmSirensView.vue'
 import SheltersView from '../views/SheltersView.vue'
 import FirstAidView from '../views/FirstAidView.vue'
+import RCBAlertsView from '../views/RCBAlertsView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,6 +27,11 @@ const router = createRouter({
       path: '/first-aid',
       name: 'first-aid',
       component: FirstAidView,
+    },
+    {
+      path: '/rcb-alerts',
+      name: 'rcb-alerts',
+      component: RCBAlertsView,
     },
     {
       path: '/about',
