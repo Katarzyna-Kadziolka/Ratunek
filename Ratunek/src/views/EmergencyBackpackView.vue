@@ -122,7 +122,7 @@ const isSideMenuOpen = ref(false)
           </svg>
         </div>
         <h2 class="feedback-title feedback-title-error">Niepoprawnie</h2>
-        <p class="feedback-text" v-if="quizStore.currentQuestion?.correctAnswer === 'take'">Essential for visibility and safety</p>
+        <p class="feedback-text" v-if="quizStore.currentQuestion?.correctAnswer === 'take'">Jeste niezbędne do przetrwania</p>
         <p class="feedback-text" v-else>Nie jest niezbędne do przetrwania</p>
         <button class="next-question-button" @click="quizStore.nextQuestion()">
           Następne pytanie
