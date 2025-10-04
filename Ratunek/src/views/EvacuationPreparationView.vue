@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import AppHeader from '@/components/AppHeader.vue'
 
 const router = useRouter()
 
@@ -41,6 +40,24 @@ const navigateToShelters = () => {
         </svg>
       </button>
     </header>
+
+    <!-- Air Raid Alert Banner -->
+    <div class="air-raid-alert">
+      <div class="alert-warning-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/>
+        </svg>
+      </div>
+      <div class="alert-text-content">
+        <h2 class="alert-main-title">ALARM LOTNICZY</h2>
+        <p class="alert-description">Natychmiastowe przygotowanie do ewakuacji</p>
+      </div>
+      <button class="alert-sound-button">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+        </svg>
+      </button>
+    </div>
 
     <!-- Main Content -->
     <main class="main-content">
@@ -186,6 +203,65 @@ const navigateToShelters = () => {
   font-weight: 400;
   margin: 2px 0 0 0;
   color: #6b7280;
+}
+
+/* Air Raid Alert Banner */
+.air-raid-alert {
+  background-color: #EF4444;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.alert-warning-icon {
+  color: white;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.alert-text-content {
+  flex: 1;
+}
+
+.alert-main-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+  margin: 0 0 2px 0;
+  letter-spacing: 0.5px;
+}
+
+.alert-description {
+  font-size: 13px;
+  color: white;
+  margin: 0;
+  opacity: 0.95;
+}
+
+.alert-sound-button {
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+  flex-shrink: 0;
+}
+
+.alert-sound-button:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.alert-sound-button:active {
+  background-color: rgba(255, 255, 255, 0.25);
 }
 
 /* Main Content */
