@@ -53,7 +53,7 @@ const navigateTo = (routeName: string) => {
           </svg>
         </div>
         <h2 class="crisis-title">Sytuacja kryzysowa</h2>
-        <p class="crisis-description">Przygotój się do ewakuacji</p>
+        <p class="crisis-description">Przygotuj się do ewakuacji</p>
       </div>
 
       <!-- Action Cards -->
