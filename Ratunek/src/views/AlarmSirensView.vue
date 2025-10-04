@@ -17,7 +17,6 @@ const isSideMenuOpen = ref(false)
     <!-- Header -->
     <AppHeader
       title="Syreny alarmowe"
-      variant="primary"
       @open-menu="isSideMenuOpen = true"
     />
 

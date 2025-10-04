@@ -17,7 +17,6 @@ const isSideMenuOpen = ref(false)
     <!-- Header -->
     <AppHeader
       title="Plecak ewakuacyjny"
-      right-button-type="help"
       @open-menu="isSideMenuOpen = true"
     />
 
