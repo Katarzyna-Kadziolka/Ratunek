@@ -107,7 +107,7 @@ const isSideMenuOpen = ref(false)
           <h3 class="info-title">Ważne informacje</h3>
         </div>
         <ul class="info-list">
-          <li>Nie przerywaj reanimacji do przybytia pomocy</li>
+          <li>Nie przerywaj reanimacji do przybycia pomocy</li>
           <li>Zmieniaj się z inną osobą co 2 minuty</li>
           <li>Uciśkaj mocno i pozwalaj na pełne uniesienie klatki</li>
         </ul>

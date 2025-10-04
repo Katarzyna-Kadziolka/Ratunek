@@ -1,10 +1,16 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import SideMenu from '@/components/SideMenu.vue'
 import AppHeader from '@/components/AppHeader.vue'
 import BottomNav from '@/components/BottomNav.vue'
 
 const isSideMenuOpen = ref(false)
+const router = useRouter()
+
+const navigateTo = (routeName: string) => {
+  router.push({ name: routeName })
+}
 </script>
 
 <template>
@@ -35,7 +41,7 @@ const isSideMenuOpen = ref(false)
       <!-- Action Cards -->
       <div class="action-cards-list">
         <!-- I Hear Alarm -->
-        <div class="action-card">
+        <div class="action-card" @click="navigateTo('alarm-sirens')">
           <div class="action-icon alarm-icon">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"/>
@@ -51,7 +57,7 @@ const isSideMenuOpen = ref(false)
         </div>
 
         <!-- I'm Injured / Trapped -->
-        <div class="action-card">
+        <div class="action-card" @click="navigateTo('so-sound')">
           <div class="action-icon injured-icon">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 2c-5.33 4.55-8 8.48-8 11.8 0 4.98 3.8 8.2 8 8.2s8-3.22 8-8.2c0-3.32-2.67-7.25-8-11.8zm0 18c-3.35 0-6-2.57-6-6.2 0-2.34 1.95-5.44 6-9.14 4.05 3.7 6 6.79 6 9.14 0 3.63-2.65 6.2-6 6.2z"/>
@@ -67,7 +73,7 @@ const isSideMenuOpen = ref(false)
         </div>
 
         <!-- I See Injured Person -->
-        <div class="action-card">
+        <div class="action-card" @click="navigateTo('first-aid')">
           <div class="action-icon first-aid-icon">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
               <path d="M19 3H5c-1.1 0-1.99.9-1.99 2L3 19c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1 11h-4v4h-4v-4H6v-4h4V6h4v4h4v4z"/>
@@ -83,7 +89,7 @@ const isSideMenuOpen = ref(false)
         </div>
 
         <!-- Find Help Point -->
-        <div class="action-card">
+        <div class="action-card" @click="navigateTo('shelters')">
           <div class="action-icon location-icon">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
