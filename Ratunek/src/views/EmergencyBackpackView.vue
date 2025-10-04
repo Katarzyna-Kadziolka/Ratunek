@@ -32,7 +32,7 @@ const isSideMenuOpen = ref(false)
           </svg>
         </div>
         <div class="info-card-content">
-          <h2 class="info-card-title">Plecak ewakuacyjnyk</h2>
+          <h2 class="info-card-title">Plecak ewakuacyjny</h2>
           <p class="info-card-subtitle">Niezbędne przedmioty na wypadek sytuacji awaryjnych</p>
           <p class="info-card-description">
             Przygotuj plecak awaryjny z niezbędnymi przedmiotami, które pomogą Ci przetrwać 72 godziny w sytuacji kryzysowej.

@@ -11,7 +11,7 @@ const evacuationRoutesStore = useEvacuationRoutesStore()
 const isSideMenuOpen = ref(false)
 
 const navigateToBackpack = () => {
-  router.push('/')
+  router.push('/backpack')
 }
 
 const navigateToShelters = () => {

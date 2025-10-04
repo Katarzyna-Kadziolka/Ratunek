@@ -223,7 +223,7 @@ const isSideMenuOpen = ref(false)
 
       <!-- App Info Footer -->
       <div class="app-info-footer">
-        <p class="app-name">Ratunek</p>
+        <p class="app-name">mKryzys</p>
         <p class="app-version">Wersja 1.2.3</p>
         <p class="app-copyright">© 2024 Rzeczpospolita Polska</p>
       </div>

@@ -124,7 +124,7 @@ const navigateToSettings = () => {
           <circle cx="8.5" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
           <path d="M20 8v6M23 11h-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-        <span>Integracja z RBC</span>
+        <span>Integracja z RCB</span>
       </button>
 
       <button class="side-menu-item">
