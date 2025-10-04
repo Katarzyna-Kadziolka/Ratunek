@@ -74,7 +74,7 @@ export const useSheltersStore = defineStore('shelters', () => {
 
   const nearestShelter = computed(() => {
     return shelters.value.reduce((nearest, current) => {
-      return current.distance < nearest.distance ? current : nearest
+      return current.distance < nearest!.distance ? current : nearest
     }, shelters.value[0])
   })
 
