@@ -1,10 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import HomeView from '../views/HomeView.vue'
 import EmergencyBackpackView from '../views/EmergencyBackpackView.vue'
 import AlarmSirensView from '../views/AlarmSirensView.vue'
 import SheltersView from '../views/SheltersView.vue'
 import EvacuationRoutesView from '../views/EvacuationRoutesView.vue'
 import FirstAidView from '../views/FirstAidView.vue'
 import RCBAlertsView from '../views/RCBAlertsView.vue'
+import SOSoundView from '../views/SOSoundView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -12,6 +14,11 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
+      component: HomeView,
+    },
+    {
+      path: '/backpack',
+      name: 'backpack',
       component: EmergencyBackpackView,
     },
     {
@@ -38,6 +45,11 @@ const router = createRouter({
       path: '/rcb-alerts',
       name: 'rcb-alerts',
       component: RCBAlertsView,
+    },
+    {
+      path: '/so-sound',
+      name: 'so-sound',
+      component: SOSoundView,
     },
     {
       path: '/about',
