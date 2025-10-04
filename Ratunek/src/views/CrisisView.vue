@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useCrisisStore } from '@/stores/crisis'
 import SideMenu from '@/components/SideMenu.vue'
 import AppHeader from '@/components/AppHeader.vue'
 import BottomNav from '@/components/BottomNav.vue'
 
-const crisisStore = useCrisisStore()
 const isSideMenuOpen = ref(false)
 </script>
 
@@ -16,122 +14,104 @@ const isSideMenuOpen = ref(false)
 
     <!-- Header -->
     <AppHeader
-      title="Kryzys"
+      title="mKryzys"
+      subtitle="Tryb awaryjny"
       @open-menu="isSideMenuOpen = true"
     />
 
     <!-- Main Content -->
     <main class="main-content">
-      <!-- Need Help Alert Card -->
-      <div class="need-help-card">
+      <!-- Crisis Situation Card -->
+      <div class="crisis-situation-card">
         <div class="alert-icon">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2L1 21h22L12 2zm0 4l8.5 15h-17L12 6zm1 11h-2v2h2v-2zm0-6h-2v4h2v-4z"/>
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
           </svg>
         </div>
-        <h2 class="alert-title">Potrzebuję pomocy</h2>
-        <p class="alert-description">
-          Wyślij prośbę o pomoc do użytkowników w promieniu {{ crisisStore.searchRadius }} m
-        </p>
-        <button class="send-help-button">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 8px;">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+        <h2 class="crisis-title">Sytuacja kryzysowa</h2>
+        <p class="crisis-description">Wybierz odpowiednią akcję poniżej</p>
+      </div>
+
+      <!-- Action Cards -->
+      <div class="action-cards-list">
+        <!-- I Hear Alarm -->
+        <div class="action-card">
+          <div class="action-icon alarm-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"/>
+            </svg>
+          </div>
+          <div class="action-content">
+            <h3 class="action-title">Słyszę alarm</h3>
+            <p class="action-subtitle">Instrukcje krok po kroku</p>
+          </div>
+          <svg class="action-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M9 18l6-6-6-6" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          Wyślij prośbę o pomoc
-        </button>
-      </div>
+        </div>
 
-      <!-- Crisis Type Cards Grid -->
-      <div class="crisis-type-grid">
-        <button class="crisis-type-card crisis-card-orange">
-          <div class="crisis-icon crisis-icon-orange">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
-              <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2" stroke="currentColor" stroke-width="2" fill="none"/>
-              <circle cx="7" cy="17" r="2" stroke="currentColor" stroke-width="2" fill="none"/>
-              <circle cx="17" cy="17" r="2" stroke="currentColor" stroke-width="2" fill="none"/>
+        <!-- I'm Injured / Trapped -->
+        <div class="action-card">
+          <div class="action-icon injured-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2c-5.33 4.55-8 8.48-8 11.8 0 4.98 3.8 8.2 8 8.2s8-3.22 8-8.2c0-3.32-2.67-7.25-8-11.8zm0 18c-3.35 0-6-2.57-6-6.2 0-2.34 1.95-5.44 6-9.14 4.05 3.7 6 6.79 6 9.14 0 3.63-2.65 6.2-6 6.2z"/>
             </svg>
           </div>
-          <span class="crisis-label">Wypadek</span>
-        </button>
+          <div class="action-content">
+            <h3 class="action-title">Jestem ranny / uwięziony</h3>
+            <p class="action-subtitle">Numery alarmowe i przycisk SOS</p>
+          </div>
+          <svg class="action-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M9 18l6-6-6-6" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
 
-        <button class="crisis-type-card crisis-card-blue">
-          <div class="crisis-icon crisis-icon-blue">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
-              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke="currentColor" stroke-width="2" fill="currentColor"/>
+        <!-- I See Injured Person -->
+        <div class="action-card">
+          <div class="action-icon first-aid-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19 3H5c-1.1 0-1.99.9-1.99 2L3 19c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1 11h-4v4h-4v-4H6v-4h4V6h4v4h4v4z"/>
             </svg>
           </div>
-          <span class="crisis-label">Nagły wypadek</span>
-        </button>
+          <div class="action-content">
+            <h3 class="action-title">Widzę ranną osobę</h3>
+            <p class="action-subtitle">Instrukcje pierwszej pomocy</p>
+          </div>
+          <svg class="action-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M9 18l6-6-6-6" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
 
-        <button class="crisis-type-card crisis-card-purple">
-          <div class="crisis-icon crisis-icon-purple">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
-              <path d="M12 2c-1.3 2.7-2 5.3-2 8 0 3.3 1.8 5 4 5s4-1.7 4-5c0-2.7-.7-5.3-2-8-1.3 2-2 4-2 6 0 1.1-.4 2-1 2s-1-.9-1-2c0-2-.7-4-2-6z" fill="currentColor"/>
+        <!-- Find Help Point -->
+        <div class="action-card">
+          <div class="action-icon location-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
             </svg>
           </div>
-          <span class="crisis-label">Pożar</span>
-        </button>
+          <div class="action-content">
+            <h3 class="action-title">Znajdź punkt pomocy</h3>
+            <p class="action-subtitle">Mapa najbliższych schronów</p>
+          </div>
+          <svg class="action-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M9 18l6-6-6-6" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
 
-        <button class="crisis-type-card crisis-card-green">
-          <div class="crisis-icon crisis-icon-green">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
-              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/>
-              <path d="M12 8v8M8 12h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <!-- I Need Help -->
+        <div class="action-card">
+          <div class="action-icon help-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M13 7h-2v2h2V7zm0 4h-2v6h2v-6zm-1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
             </svg>
           </div>
-          <span class="crisis-label">Inne</span>
-        </button>
-      </div>
-
-      <!-- Active Requests Section -->
-      <div class="active-requests-section">
-        <h2 class="section-title">Aktywne prośby w pobliżu</h2>
-
-        <div class="requests-list">
-          <div
-            v-for="request in crisisStore.requestsInRadius"
-            :key="request.id"
-            class="request-card"
-          >
-            <div class="request-header">
-              <div class="request-icon" :style="{ background: crisisStore.getCrisisTypeColor(request.type) }">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
-                  <path v-if="request.type === 'accident'" d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2M7 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM17 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" stroke="white" stroke-width="1.5" fill="none"/>
-                  <path v-else-if="request.type === 'medical-emergency'" d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" fill="white"/>
-                </svg>
-              </div>
-              <div class="request-info">
-                <h3 class="request-title">{{ request.title }}</h3>
-                <p class="request-time">{{ request.time }}</p>
-              </div>
-            </div>
-
-            <p class="request-description">{{ request.description }}</p>
-
-            <div class="request-location">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="margin-right: 6px;">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="#6b7280" stroke-width="2"/>
-                <circle cx="12" cy="10" r="3" stroke="#6b7280" stroke-width="2"/>
-              </svg>
-              <span>{{ request.distance }} m od Ciebie</span>
-            </div>
-
-            <div class="request-actions">
-              <button class="action-button primary" @click="crisisStore.offerHelp(request.id)">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="margin-right: 6px;">
-                  <path d="M9 11l3 3L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                Pokaż drogę
-              </button>
-              <button class="action-button secondary" @click="crisisStore.callEmergency(request.id)">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="margin-right: 6px;">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="2"/>
-                </svg>
-                Zadzwoń
-              </button>
-            </div>
+          <div class="action-content">
+            <h3 class="action-title">Potrzebuję pomocy</h3>
+            <p class="action-subtitle">Wyślij prośbę o pomoc</p>
           </div>
+          <svg class="action-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M9 18l6-6-6-6" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </div>
       </div>
     </main>
@@ -159,297 +139,152 @@ const isSideMenuOpen = ref(false)
   width: 100%;
 }
 
-/* Need Help Card */
-.need-help-card {
-  background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
-  border-left: 4px solid #dc2626;
+/* Crisis Situation Card */
+.crisis-situation-card {
+  background: white;
   border-radius: 16px;
-  padding: 24px;
+  padding: 32px 24px;
   margin-bottom: 24px;
   text-align: center;
-  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .alert-icon {
   display: inline-flex;
   width: 64px;
   height: 64px;
-  background: #dc2626;
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
   border-radius: 50%;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: #dc2626;
   margin-bottom: 16px;
 }
 
-.alert-title {
-  font-size: 24px;
+.crisis-title {
+  font-size: 20px;
   font-weight: 700;
-  color: #991b1b;
+  color: #1f2937;
   margin: 0 0 8px 0;
 }
 
-.alert-description {
+.crisis-description {
   font-size: 14px;
-  color: #b91c1c;
+  color: #6b7280;
   line-height: 1.6;
-  margin: 0 0 20px 0;
+  margin: 0;
 }
 
-.send-help-button {
-  width: 100%;
-  background: #dc2626;
-  color: white;
-  border: none;
-  border-radius: 12px;
-  padding: 16px 24px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s;
-  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
-}
-
-.send-help-button:hover {
-  background: #b91c1c;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(220, 38, 38, 0.4);
-}
-
-.send-help-button:active {
-  transform: translateY(0);
-}
-
-/* Crisis Type Grid */
-.crisis-type-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-  margin-bottom: 32px;
-}
-
-.crisis-type-card {
-  background: white;
-  border: 2px solid #e5e7eb;
-  border-radius: 20px;
-  padding: 32px 20px;
+/* Action Cards List */
+.action-cards-list {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  cursor: pointer;
-  transition: all 0.2s;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  min-height: 160px;
-}
-
-.crisis-type-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.crisis-type-card:active {
-  transform: translateY(0);
-}
-
-/* Card-specific border colors */
-.crisis-card-orange {
-  border-color: #fed7aa;
-  background: #fffbf5;
-}
-
-.crisis-card-blue {
-  border-color: #bfdbfe;
-  background: #f0f9ff;
-}
-
-.crisis-card-purple {
-  border-color: #e9d5ff;
-  background: #faf5ff;
-}
-
-.crisis-card-green {
-  border-color: #d1fae5;
-  background: #f0fdf4;
-}
-
-.crisis-icon {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.crisis-icon-orange {
-  background: #f97316;
-  color: white;
-}
-
-.crisis-icon-blue {
-  background: #3b82f6;
-  color: white;
-}
-
-.crisis-icon-purple {
-  background: #a855f7;
-  color: white;
-}
-
-.crisis-icon-green {
-  background: #22c55e;
-  color: white;
-}
-
-.crisis-label {
-  font-size: 16px;
-  font-weight: 600;
-  color: #1f2937;
-  text-align: center;
-}
-
-/* Active Requests Section */
-.active-requests-section {
-  margin-bottom: 20px;
-}
-
-.section-title {
-  font-size: 20px;
-  font-weight: 600;
-  color: #1f2937;
-  margin: 0 0 16px 0;
-}
-
-.requests-list {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-/* Request Card */
-.request-card {
-  background: white;
-  border-radius: 16px;
-  padding: 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.request-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-}
-
-.request-header {
-  display: flex;
-  align-items: center;
   gap: 12px;
-  margin-bottom: 12px;
 }
 
-.request-icon {
+.action-card {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.action-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.action-card:active {
+  transform: translateY(0);
+}
+
+.action-icon {
   width: 48px;
   height: 48px;
-  border-radius: 50%;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-.request-info {
+/* Icon Colors */
+.alarm-icon {
+  background: #fff7ed;
+  color: #f97316;
+}
+
+.injured-icon {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.first-aid-icon {
+  background: #eff6ff;
+  color: #3b82f6;
+}
+
+.location-icon {
+  background: #eff6ff;
+  color: #3b82f6;
+}
+
+.help-icon {
+  background: #f5f3ff;
+  color: #a855f7;
+}
+
+.action-content {
   flex: 1;
 }
 
-.request-title {
-  font-size: 18px;
+.action-title {
+  font-size: 16px;
   font-weight: 600;
   color: #1f2937;
   margin: 0 0 4px 0;
 }
 
-.request-time {
+.action-subtitle {
   font-size: 13px;
   color: #6b7280;
   margin: 0;
 }
 
-.request-description {
-  font-size: 14px;
-  color: #4b5563;
-  line-height: 1.6;
-  margin: 0 0 12px 0;
-}
-
-.request-location {
-  display: flex;
-  align-items: center;
-  font-size: 13px;
-  color: #6b7280;
-  margin-bottom: 16px;
-}
-
-.request-actions {
-  display: flex;
-  gap: 12px;
-}
-
-.action-button {
-  flex: 1;
-  border: none;
-  border-radius: 10px;
-  padding: 12px 16px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s;
-}
-
-.action-button.primary {
-  background: #1e3a8a;
-  color: white;
-  box-shadow: 0 2px 8px rgba(30, 58, 138, 0.2);
-}
-
-.action-button.primary:hover {
-  background: #1e40af;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
-}
-
-.action-button.secondary {
-  background: white;
-  color: #374151;
-  border: 1px solid #e5e7eb;
-}
-
-.action-button.secondary:hover {
-  background: #f9fafb;
-  border-color: #d1d5db;
-}
-
-.action-button:active {
-  transform: translateY(0);
+.action-arrow {
+  flex-shrink: 0;
 }
 
 /* Responsive Design */
 @media (max-width: 480px) {
-
-  .request-actions {
-    flex-direction: column;
+  .main-content {
+    padding: 16px;
   }
 
-  .action-button {
-    width: 100%;
+  .crisis-situation-card {
+    padding: 24px 20px;
+  }
+
+  .action-card {
+    padding: 14px;
+  }
+
+  .action-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .action-title {
+    font-size: 15px;
+  }
+
+  .action-subtitle {
+    font-size: 12px;
   }
 }
 </style>

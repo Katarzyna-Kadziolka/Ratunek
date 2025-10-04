@@ -1,6 +1,7 @@
 <script setup lang="ts">
 interface Props {
   title: string
+  subtitle?: string
   variant?: 'default' | 'primary'
   rightButtonType?: 'help' | 'search' | 'none'
 }
@@ -22,7 +23,10 @@ const emit = defineEmits<{
         <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
       </svg>
     </button>
-    <h1 class="header-title">{{ title }}</h1>
+    <div class="header-content">
+      <h1 class="header-title">{{ title }}</h1>
+      <p v-if="subtitle" class="header-subtitle">{{ subtitle }}</p>
+    </div>
 
     <!-- Right button -->
     <button v-if="rightButtonType === 'help'" class="icon-button help-button">
@@ -58,12 +62,22 @@ const emit = defineEmits<{
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.header-content {
+  flex: 1;
+  text-align: center;
+}
+
 .header-title {
   font-size: 18px;
   font-weight: 600;
   margin: 0;
-  flex: 1;
-  text-align: center;
+}
+
+.header-subtitle {
+  font-size: 12px;
+  font-weight: 400;
+  margin: 2px 0 0 0;
+  opacity: 0.8;
 }
 
 .icon-button {
