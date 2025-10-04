@@ -8,6 +8,7 @@ import FirstAidView from '../views/FirstAidView.vue'
 import RCBAlertsView from '../views/RCBAlertsView.vue'
 import SOSoundView from '../views/SOSoundView.vue'
 import CrisisView from '../views/CrisisView.vue'
+import SettingsView from '../views/SettingsView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -56,6 +57,11 @@ const router = createRouter({
       path: '/crisis',
       name: 'crisis',
       component: CrisisView,
+    },
+    {
+      path: '/settings',
+      name: 'settings',
+      component: SettingsView,
     },
     {
       path: '/about',
