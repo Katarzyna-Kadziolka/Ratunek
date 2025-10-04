@@ -52,7 +52,10 @@ const isSideMenuOpen = ref(false)
             >
               <div class="step-left">
                 <div class="step-icon">
-                  <svg v-if="step.id === 'check-consciousness'" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <svg v-if="step.id === 'check-safety'" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <svg v-else-if="step.id === 'check-consciousness'" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
                     <path d="M12 16v-4M12 8h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                   </svg>
@@ -95,7 +98,7 @@ const isSideMenuOpen = ref(false)
           <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 8px;">
             <path d="M8 5v14l11-7z"/>
           </svg>
-          Odtwórz rytm do reanimacji
+          Odtwórz rytm do resuscytacji
         </button>
         <p class="metronome-info">100-120 uderzeń na minutę</p>
       </div>

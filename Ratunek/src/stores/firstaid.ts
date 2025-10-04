@@ -12,30 +12,37 @@ export interface FirstAidStep {
 export const useFirstAidStore = defineStore('firstaid', () => {
   const cprSteps = ref<FirstAidStep[]>([
     {
+      id: 'check-safety',
+      title: 'Sprawdź czy jest bezpiecznie',
+      stepNumber: 1,
+      description: 'Sprawdź czy najbliższe otoczenie nie stanowi dla ciebie zagrożenia.',
+      expanded: false
+    },
+    {
       id: 'check-consciousness',
       title: 'Sprawdź przytomność',
-      stepNumber: 1,
+      stepNumber: 2,
       description: 'Delikatnie potrząśnij osobą i głośno zapytaj: "Czy wszystko w porządku?". Sprawdź czy osoba reaguje.',
       expanded: false
     },
     {
       id: 'call-help',
       title: 'Wezwij pomoc',
-      stepNumber: 2,
+      stepNumber: 3,
       description: 'Zadzwoń pod numer 112 lub poproś kogoś o wezwanie pomocy. Podaj dokładną lokalizację i opis sytuacji.',
       expanded: false
     },
     {
       id: 'open-airway',
       title: 'Udrożnij drogi oddechowe',
-      stepNumber: 3,
+      stepNumber: 4,
       description: 'Odchyl głowę do tyłu i unieś brodę, aby udrożnić drogi oddechowe. Sprawdź czy osoba oddycha.',
       expanded: false
     },
     {
       id: 'cpr-cycle',
       title: '30 uciśnięć, 2 wdechy',
-      stepNumber: 4,
+      stepNumber: 5,
       description: 'Wykonaj 30 uciśnięć klatki piersiowej (głębokość 5-6 cm) i 2 oddechy ratownicze. Kontynuuj cykl do przyjazdu pomocy.',
       expanded: false
     }
