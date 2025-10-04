@@ -30,6 +30,11 @@ const navigateToShelters = () => {
   router.push('/shelters')
 }
 
+const navigateToEvacuationRoutes = () => {
+  closeSideMenu()
+  router.push('/evacuation-routes')
+}
+
 const navigateToFirstAid = () => {
   closeSideMenu()
   router.push('/first-aid')
@@ -80,7 +85,7 @@ const navigateToRCBAlerts = () => {
         <span>Schrony</span>
       </button>
 
-      <button class="side-menu-item">
+      <button class="side-menu-item" @click="navigateToEvacuationRoutes">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="menu-icon">
           <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
