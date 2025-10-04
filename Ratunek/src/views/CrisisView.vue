@@ -43,40 +43,40 @@ const isSideMenuOpen = ref(false)
 
       <!-- Crisis Type Cards Grid -->
       <div class="crisis-type-grid">
-        <button class="crisis-type-card" style="background: linear-gradient(135deg, #fed7aa 0%, #fdba74 100%);">
-          <div class="crisis-icon" style="background: #ea580c;">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
-              <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2" stroke="white" stroke-width="1.5" fill="none"/>
-              <circle cx="7" cy="17" r="2" stroke="white" stroke-width="1.5" fill="none"/>
-              <circle cx="17" cy="17" r="2" stroke="white" stroke-width="1.5" fill="none"/>
+        <button class="crisis-type-card crisis-card-orange">
+          <div class="crisis-icon crisis-icon-orange">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+              <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2" stroke="currentColor" stroke-width="2" fill="none"/>
+              <circle cx="7" cy="17" r="2" stroke="currentColor" stroke-width="2" fill="none"/>
+              <circle cx="17" cy="17" r="2" stroke="currentColor" stroke-width="2" fill="none"/>
             </svg>
           </div>
           <span class="crisis-label">Wypadek</span>
         </button>
 
-        <button class="crisis-type-card" style="background: linear-gradient(135deg, #bfdbfe 0%, #93c5fd 100%);">
-          <div class="crisis-icon" style="background: #3b82f6;">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
-              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke="white" stroke-width="2" fill="white"/>
+        <button class="crisis-type-card crisis-card-blue">
+          <div class="crisis-icon crisis-icon-blue">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke="currentColor" stroke-width="2" fill="currentColor"/>
             </svg>
           </div>
           <span class="crisis-label">Nagły wypadek</span>
         </button>
 
-        <button class="crisis-type-card" style="background: linear-gradient(135deg, #e9d5ff 0%, #d8b4fe 100%);">
-          <div class="crisis-icon" style="background: #9333ea;">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
-              <path d="M12 2c-1.3 2.7-2 5.3-2 8 0 3.3 1.8 5 4 5s4-1.7 4-5c0-2.7-.7-5.3-2-8-1.3 2-2 4-2 6 0 1.1-.4 2-1 2s-1-.9-1-2c0-2-.7-4-2-6z" fill="white"/>
+        <button class="crisis-type-card crisis-card-purple">
+          <div class="crisis-icon crisis-icon-purple">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2c-1.3 2.7-2 5.3-2 8 0 3.3 1.8 5 4 5s4-1.7 4-5c0-2.7-.7-5.3-2-8-1.3 2-2 4-2 6 0 1.1-.4 2-1 2s-1-.9-1-2c0-2-.7-4-2-6z" fill="currentColor"/>
             </svg>
           </div>
           <span class="crisis-label">Pożar</span>
         </button>
 
-        <button class="crisis-type-card" style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);">
-          <div class="crisis-icon" style="background: #10b981;">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
-              <circle cx="12" cy="12" r="10" stroke="white" stroke-width="2" fill="none"/>
-              <path d="M12 8v8M8 12h8" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        <button class="crisis-type-card crisis-card-green">
+          <div class="crisis-icon crisis-icon-green">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/>
+              <path d="M12 8v8M8 12h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
             </svg>
           </div>
           <span class="crisis-label">Inne</span>
@@ -232,41 +232,85 @@ const isSideMenuOpen = ref(false)
 }
 
 .crisis-type-card {
-  border: none;
-  border-radius: 16px;
-  padding: 24px;
+  background: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 20px;
+  padding: 32px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
   cursor: pointer;
   transition: all 0.2s;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  min-height: 160px;
 }
 
 .crisis-type-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .crisis-type-card:active {
-  transform: translateY(-2px);
+  transform: translateY(0);
+}
+
+/* Card-specific border colors */
+.crisis-card-orange {
+  border-color: #fed7aa;
+  background: #fffbf5;
+}
+
+.crisis-card-blue {
+  border-color: #bfdbfe;
+  background: #f0f9ff;
+}
+
+.crisis-card-purple {
+  border-color: #e9d5ff;
+  background: #faf5ff;
+}
+
+.crisis-card-green {
+  border-color: #d1fae5;
+  background: #f0fdf4;
 }
 
 .crisis-icon {
-  width: 64px;
-  height: 64px;
+  width: 72px;
+  height: 72px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.crisis-icon-orange {
+  background: #f97316;
+  color: white;
+}
+
+.crisis-icon-blue {
+  background: #3b82f6;
+  color: white;
+}
+
+.crisis-icon-purple {
+  background: #a855f7;
+  color: white;
+}
+
+.crisis-icon-green {
+  background: #22c55e;
+  color: white;
 }
 
 .crisis-label {
   font-size: 16px;
   font-weight: 600;
   color: #1f2937;
+  text-align: center;
 }
 
 /* Active Requests Section */
